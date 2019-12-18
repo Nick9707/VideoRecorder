@@ -12,24 +12,25 @@ const progress = player.querySelector(".progress");
 const progressBar = player.querySelector(".progress__filled");
 const toggleButton = player.querySelector(".togglePlayback");
 const volume = player.querySelector(".playerVolume");
-const speed = player.querySelector(".playerSpeed");
 const fullscreen = player.querySelector(".toggleFullscreen");
 const fastRewind = player.querySelector(".player__fastRewind");
 const rateRewind = player.querySelector(".player__rateRewind");
 const fastForward = player.querySelector(".player__fastForward");
 const rateForward = player.querySelector(".player__rateForward");
-const customInput = document.querySelector(".custom-file-input");
+const customInput = document.querySelector(".custom-file-upload");
 const start = document.getElementById('start');
 const stop = document.getElementById('stop');
 const buttons = document.getElementById('btns');
 let chunks = [];
+let isError = false;
 let media = {
     tag: 'video',
     type: 'video/webm',
     ext: '.mp4',
     gUM: {video: true, audio: true}
 };
-let stream, recorder;
+let stream;
+let recorder;
 
 
 /* Functions */
@@ -72,8 +73,7 @@ function handleFastForward() {
 function handleUploadedVideo() {
     let file = uploadedVideo.files[0];
     let type = file.type.split('/');
-    let isError = false;
-
+    isError = false;
     if (type[type.length - 1] !== "mp4" && type[type.length - 1] !== "mov"){
         isError = true;
         error.style.display = "block";
@@ -90,8 +90,10 @@ function handleUploadedVideo() {
         errorMessage.innerText += "10mb file size max only";
     }
     if (!isError) {
+        errorMessage.innerText = "";
+        error.style.display = "none";
         video.src = URL.createObjectURL(file);
-        customInput.classList.add("custom-file-input-after");
+        customInput.innerHTML = "Change video";
     }
 }
 
@@ -124,6 +126,7 @@ function toggleControls() {
 
 start.onclick = e => {
     navigator.mediaDevices.getUserMedia(media.gUM).then(_stream => {
+        stop.disabled = false;
         stream = _stream;
         buttons.style.display = 'inherit';
         start.removeAttribute('disabled');
@@ -137,10 +140,11 @@ start.onclick = e => {
         recorder.start(recordChunkSize);
         recorder.onstop = () => {
             let blob = new Blob(chunks, {type: 'video'});
-            video.src = URL.createObjectURL(blob,
-                () => {
-                    handleProgress();
-                });
+            video.src = URL.createObjectURL(blob);
+            handleProgress();
+            errorMessage.innerText = "";
+            error.style.display = "none";
+            stop.disabled = true;
         };
         start.disabled = true;
         stop.removeAttribute('disabled');
@@ -167,7 +171,6 @@ fastRewind.addEventListener("click", handleFastRewind);
 rateRewind.addEventListener("click", handleRateRewind);
 volume.addEventListener("change", handleRangeUpdate);
 volume.addEventListener("mousemove", handleRangeUpdate);
-speed.addEventListener("change", handleRangeUpdate);
 
 let mousedown = false;
 progress.addEventListener("click", handleSeek);

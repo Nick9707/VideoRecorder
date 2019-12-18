@@ -180,55 +180,75 @@ i {
 }
 /* unholy css to style input type="range" */
 
-input[type="range"] {
-    -webkit-appearance: none;
-    background: transparent;
-    width: 100%;
-    margin: 0 5px;
+
+input[type="file"] {
+    display: none;
 }
 
-input[type="range"]:focus {
-    outline: none;
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 8.4px;
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
     cursor: pointer;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 1.3px;
-    border: 0.2px solid rgba(1, 1, 1, 0);
 }
 
-input[type="range"]::-webkit-slider-thumb {
-    height: 15px;
-    width: 15px;
-    border-radius: 50px;
-    background: #ffc600;
+.btn {
+    font-size: 14px;
+    padding: 6px 12px;
+    margin-bottom: 0;
+
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
     cursor: pointer;
-    -webkit-appearance: none;
-    margin-top: -3.5px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+}
+.btn:focus,
+.btn:active:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+.btn:hover,
+.btn:focus {
+    color: #333;
+    text-decoration: none;
+}
+.btn:active {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
 }
 
-input[type="range"]::-moz-range-track {
-    width: 100%;
-    height: 8.4px;
-    cursor: pointer;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
-    background: #ffffff;
-    border-radius: 1.3px;
-    border: 0.2px solid rgba(1, 1, 1, 0);
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
 }
-
-input[type="range"]::-moz-range-thumb {
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
-    height: 15px;
-    width: 15px;
-    border-radius: 50px;
-    background: #ffc600;
-    cursor: pointer;
+.btn-default:focus {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #8c8c8c;
+}
+.btn-default:hover {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.btn-default:active {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
 }
 
 /* fullscreen */

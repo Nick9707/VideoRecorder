@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/all.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -31,26 +32,22 @@
             <input type="range" name="volume" class="player__slider playerVolume" min="0" max="1" step="0.05" value="1">
         </div>
         <div class="player__controls-holder">
-            <select name="playbackRate" class="player__select playerSpeed">
-                <option value="0.5">0.5</option>
-                <option value="0.75">0.75</option>
-                <option value="1" selected>Normal</option>
-                <option value="1.5">1.5</option>
-                <option value="2">2</option>
-            </select>
             <button class="player__button toggleFullscreen" title="Toggle Play"><i class="fas fa-expand-arrows-alt"></i>
             </button>
         </div>
     </div>
 </div>
 <div>
-    <input type="file" class="custom-file-input">
     <div id='btns'>
-        <button  class="btn btn-default" id='start'>Start</button>
-        <button  class="btn btn-default" id='stop'>Stop</button>
+        <label for="file-upload" class="btn btn-default custom-file-upload">
+            Upload Video
+        </label>
+        <input id="file-upload" type="file"/>
+        <button class="btn btn-default" id='start'>Record video</button>
+        <button class="btn btn-default" id='stop' disabled>Stop recording</button>
     </div>
 </div>
-    <script src="./js/player.js"></script>
+<script src="./js/player.js"></script>
 </body>
 
 </html>
