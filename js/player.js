@@ -73,6 +73,7 @@ function handleFastForward() {
 function handleUploadedVideo() {
     let file = uploadedVideo.files[0];
     let type = file.type.split('/');
+    errorMessage.innerText = "";
     isError = false;
     if (type[type.length - 1] !== "mp4" && type[type.length - 1] !== "mov"){
         isError = true;
@@ -87,7 +88,7 @@ function handleUploadedVideo() {
     if (file.size / 1024**2 > 10){
         isError = true;
         error.style.display = "block";
-        errorMessage.innerText += "10mb file size max only";
+        errorMessage.innerText += "10mb file size max only \n";
     }
     if (!isError) {
         errorMessage.innerText = "";
