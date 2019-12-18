@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Video Player</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/all.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="error" hidden>
+    <p class="errorMessage"></p>
+</div>
+
+<div class="player">
+    <video class="player__video viewer"></video>
+    <div class="player__controls player__controls--visible">
+        <div class="progress">
+            <div class="progress__filled"></div>
+        </div>
+        <div class="player__controls-holder">
+            <button class="player__fastRewind"><i class="fas fa-fast-backward"></i></button>
+            <button class="player__rateRewind"><i class="fas fa-step-backward"></i></button>
+            <button class="player__button togglePlayback" title="Toggle Play"><i class="player__playbackIcon"></i>
+            </button>
+            <button class="player__rateForward"><i class="fas fa-step-forward"></i></button>
+            <button class="player__fastForward"><i class="fas fa-fast-forward"></i></button>
+            <input type="range" name="volume" class="player__slider playerVolume" min="0" max="1" step="0.05" value="1">
+        </div>
+        <div class="player__controls-holder">
+            <select name="playbackRate" class="player__select playerSpeed">
+                <option value="0.5">0.5</option>
+                <option value="0.75">0.75</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.5">1.5</option>
+                <option value="2">2</option>
+            </select>
+            <button class="player__button toggleFullscreen" title="Toggle Play"><i class="fas fa-expand-arrows-alt"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div>
+    <input type="file" class="custom-file-input">
+    <div id='btns'>
+        <button  class="btn btn-default" id='start'>Start</button>
+        <button  class="btn btn-default" id='stop'>Stop</button>
+    </div>
+</div>
+    <script src="./js/player.js"></script>
+</body>
+
+</html>
